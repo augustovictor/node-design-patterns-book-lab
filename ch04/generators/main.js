@@ -1,14 +1,23 @@
 const fs = require('fs');
-const processes = require('./processes');
+const processesDb = require('./processes');
 const database = require('./all');
 
-const getDataAsync = (data, cb) => {
-    process.nextTick(() => cb(data));
+const fetchData = data => new Promise(resolve => process.nextTick(resolve(data)));
+
+// const processes = fetchData(processesDb);
+
+// processes.then(console.log);
+
+const execAsync = function* (func) {
+    const result = yield func;
+    yield result;
 };
 
-const res = getDataAsync(processes, console.log);
-console.log(`Result of res: ${res}`);
-
-const getTasksByProcessId = function* (processId) {
-    const tasks = yield getDataAsync(database);
+const getTasksFromFirstProcess = () => {
+    const tasks = execAsync(fetchData(processesDb)).next();
+    tasks.value.then(console.log)
+    console.log(tasks.done);
+    console.log('done');
 };
+
+getTasksFromFirstProcess();
