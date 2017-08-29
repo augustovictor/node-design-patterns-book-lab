@@ -47,6 +47,53 @@ Streamed (Each part at a time)
 ### Best Practices
 - Always use `process.on('uncaughtException' err => { /* logging */ process.exit(1) }`;
 
+### Async code options
+##### Plain JavaScript
+**Pros**
+- Does not require any additional libraries or technology
+- Offers the best performance
+- Provides the best level of compatibility with third-party libraries
+- Allows the creation of ad hoc and more advanced algorithms
+**Cons**
+- Might require extra code and relatively complex algorithms
+
+##### Async (library)
+**Pros**
+- Simplifies the most common control flow patterns
+- Is still a callback-based solution
+- Good performance
+**Cons**
+- Introduces an external dependency
+- Might still not be enough for advanced flows
+
+##### Promises
+**Pros**
+- Greatly simplifies the most common control flow patterns
+- Robust error handling
+- Part of the ES2015 specification
+- Guarantees deferred invocation of onFulfilled and onRejected
+**Cons**
+- Requires promisify callback-based APIs
+- Introduces a small performance hit
+
+##### Generators
+**Pros**
+- Makes non-blocking API look like a blocking one
+- Simplifies error handling
+- Part of ES2015 specification
+**Cons**
+- Requires a complementary control flow library
+- Still requires callbacks or promises to implement non-sequential flows
+- Requires thunkify or promisify nongenerator-based APIs
+
+##### Async await
+**Pros**
+- Makes non-blocking API look like blocking
+- Clean and intuitive syntax
+**Cons**
+- Not yet available in JavaScript and Node.js natively
+- Requires Babel or other transpilers and some configuration to be used today
+
 ### Export Patterns
 #### Revealing modules pattern
 Self-invoking function that exports only the parts meant to be public.

@@ -9,9 +9,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1"
+=======
+  "dependencies": {
+    "co": "^4.6.0"
+>>>>>>> 55ff0fd1e5903728b26c99578d2804f18d02cd21
   }
 }
