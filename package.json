@@ -1,12 +1,17 @@
 {
   "name": "node-design-patterns-book-lab",
   "version": "1.0.0",
-  "description": "- Monkey patching: Modifying the existing objects at runtime to change or extend their behavior or to apply temporary fixes. - Competitive race: When many async operations are ended as soon as one or a given number of tasks complete.",
+  "description": "",
   "main": "AsyncOperation.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1"
+  }
 }

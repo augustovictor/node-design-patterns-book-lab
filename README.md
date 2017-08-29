@@ -14,6 +14,30 @@ Callbacks deferred with `process.nextTick()` will be processed before any other 
 ##### Sequential execution
 - `async.series()`: Takes a list of tasks and a callback function that is invoked when all the tasks have been completed;
 
+#### Streams
+##### Approaches:
+###### Spatial Efficiency
+Buffered (All at once)
+
+###### Time Efficiency
+Streamed (Each part at a time)
+
+#### Types
+- Readable
+    - A Readable stream represents a source of data; in Node.js, it's implemented using the Readableabstract class that is available in the stream module.
+    - Non-flowing mode: Read specific a specified chunk size at a time on demand, using `.read`;
+    - Flowing mode: Data is pushed to the data listener as soon as it arrives, using `.on('data', chunk => {})` listener;
+- Writable
+    -
+- Duplex
+    -
+- Transform
+    -
+
+#### Operation modes
+- Binary mode: Data is streamed in the form of chunks, such as buffers or strings;
+- Object mode: Data is treated as a sequence of discrete objects (allowing almost any JavaScript value)
+
 ---
 
 ### Conventions
