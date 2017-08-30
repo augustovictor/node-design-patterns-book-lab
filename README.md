@@ -192,6 +192,33 @@ logger.log('This is an informational message');
 
 ### Design Patterns
 
+#### Factory
+Definition: A generic interface for creating objects. It allows us to separate the object creation from its implementation.
+
+#### Revealing Constructor
+
+#### Proxy
+A proxy is an object that controls access to another object, called a subject. The proxy and
+the subject have an identical interface and this allows us to transparently swap one for the
+other; in fact, the alternative name for this pattern is surrogate.
+
+Involves wrapping actual instances of the subject, thus preserving its state.
+
+Use cases:
+- Data validation: The proxy validates the input before forwarding it to the subject
+Security: The proxy verifies that the client is authorized to perform the operation
+and it passes the request to the subject only if the outcome of the check is positive
+- Caching: The proxy keeps an internal cache so that the operations are executed
+on the subject only if the data is not yet present in the cache
+- Lazy initialization: If the creation of the subject is expensive, the proxy can delay
+it to when it's really necessary
+- Logging: The proxy intercepts the method invocations and the relative
+parameters, recoding them as they happen
+- Remote objects: A proxy can take an object that is located remotely, and make it
+appear local
+
+---
+
 #### Observer
 Defines an object (called subject), which can notify a set of observers (or listeners), when a change in its state happens. For this we'd use `EventEmitter` class which comes with two methods:
 - `on(event, listener)`: Register a listener for given event;
