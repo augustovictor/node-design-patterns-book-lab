@@ -221,6 +221,9 @@ Approaches:
 - Object Composition: Composition is a technique whereby an object is combined with another object for the purpose of extending or using its functionality.
 - Object Augmentation: Object augmentation (or monkey patching) consists of modifying the subject directly by replacing a method with its proxied implementation.
 
+#### Decorator
+Used to add functionallity to an object instance. We can do it either by composition or augmenting.
+
 ---
 
 #### Observer
