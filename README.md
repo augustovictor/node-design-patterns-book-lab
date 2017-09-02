@@ -224,6 +224,17 @@ Approaches:
 #### Decorator
 Used to add functionallity to an object instance. We can do it either by composition or augmenting.
 
+#### Adapter
+Allows us to access the functionality of an object using a different interface.
+Operations of the Adapter can also be a composition of one or more method invocations on the Adaptee.
+
+#### Strategy
+The Strategy pattern enables an object, called the Context, to support variations in its logic by extracting the variable parts into separate, interchangeable objects called Strategies. The context implements the common logic of a family of algorithms, while a strategy implements the mutable parts, allowing the context to adapt its behavior depending on different factors such as an input value, a system configuration, or user preferences.
+
+Approaches might have been the following:
+- Creating two different strategy families: one for the deserialization and the other for the serialization. This would have allowed reading from a format and saving into another.
+- Dynamically selecting the strategy, depending on the extension of the file provided; the Config object could have maintained a map extension->strategy and used it to select the right algorithm for the given extension.
+
 ---
 
 #### Observer
