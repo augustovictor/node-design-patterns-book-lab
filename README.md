@@ -235,6 +235,9 @@ Approaches might have been the following:
 - Creating two different strategy families: one for the deserialization and the other for the serialization. This would have allowed reading from a format and saving into another.
 - Dynamically selecting the strategy, depending on the extension of the file provided; the Config object could have maintained a map extension->strategy and used it to select the right algorithm for the given extension.
 
+#### State
+State is a variation of the Strategy pattern where the strategy changes depending on the state of the context. We have seen in the previous section how a strategy can be selected based on different variables such as user preferences, a configuration parameter, and the input provided, and once this selection is done, the strategy stays unchanged for the rest of the lifespan of the context.
+
 ---
 
 #### Observer
