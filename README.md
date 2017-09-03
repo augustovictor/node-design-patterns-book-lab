@@ -238,6 +238,12 @@ Approaches might have been the following:
 #### State
 State is a variation of the Strategy pattern where the strategy changes depending on the state of the context. We have seen in the previous section how a strategy can be selected based on different variables such as user preferences, a configuration parameter, and the input provided, and once this selection is done, the strategy stays unchanged for the rest of the lifespan of the context.
 
+#### Template
+It has a lot in common with `Strategy`.
+Template consists of defining an abstract pseudo class that represents the skeleton of an algorithm, where some of its steps are left undefined. Subclasses can then fill the gaps in the algorithm by implementing the missing steps, called template methods.
+
+While Strategy allows us to do it dynamically and possibly at runtime, with Template the complete algorithm is determined the moment the concrete class is defined.
+
 ---
 
 #### Observer
