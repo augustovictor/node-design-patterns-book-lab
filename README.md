@@ -244,6 +244,16 @@ Template consists of defining an abstract pseudo class that represents the skele
 
 While Strategy allows us to do it dynamically and possibly at runtime, with Template the complete algorithm is determined the moment the concrete class is defined.
 
+#### Middleware
+Works the same way Chain of Responsibility pattern does.
+
+The essential component of the pattern is the Middleware Manager, which is responsible for organizing and executing the middleware functions.
+
+There is no strict rule on how the data is processed and propagated in the pipeline. The strategies include:
+- Augmenting the data with additional properties or functions;
+- Replacing the data with the result of some kind of processing;
+- Maintaining the immutability of the data and always returning fresh copies as result of processing;
+
 ---
 
 #### Observer
