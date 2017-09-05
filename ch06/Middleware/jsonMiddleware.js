@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports.json = () => {
     return {
         inbound: function(msg, next) {
             msg.data = JSON.parse(msg.data.toString());
