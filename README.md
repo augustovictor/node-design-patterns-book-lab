@@ -313,6 +313,18 @@ Types of DI:
     - E.g., `const service = new Service();` `service.depA = DepA; service.depB = DepB;`
     - This is less robuts but we may need it in case there depA needs the existence of depB for example.
 
-##### Service locator;
+##### Service locator
+Its core principle is to have a central registry in order to manage components and act as a mediator whenever a module needs to load a dependency.
+
+Each component loads its dependencies explicitly from the `serviceLocator` itself.
+Obs: When using `DI container`, the component has no knowledge of the container.
+Noticeable difference between the two approaches:
+- Reusability: A component relying on a `serviceLocator` is less reusable because it requires a `serviceLocator` to be available in the system;
+- Readability: A `serviceLocator` obfuscates the dependency requirements of a component;
+
+There are 3 types of service locator to wire components:
+- Hardcoded dependency on service locator: `require(depA)`;
+- Injected service locator: Referenced by a component through DI (More convenient way of injecting many dependencies at once);
+- Global service locator: Same as `hardcoded`, but a real `singleton`;
 
 ##### Dependency injection containers;
