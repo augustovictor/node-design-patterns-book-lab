@@ -254,7 +254,23 @@ There is no strict rule on how the data is processed and propagated in the pipel
 - Replacing the data with the result of some kind of processing;
 - Maintaining the immutability of the data and always returning fresh copies as result of processing;
 
----
+#### Command
+We can consider a Command as any object that encapsulates all the information necessary to perform an action at a later time. So, instead of invoking a method or a function directly, we create an object representing the intention to perform such an invocation; it will then be the responsibility of another component to materialize the intent, transforming it into an actual action.
+
+The typical organization of the Command pattern can be described as follows:
+- Command: This is the object encapsulating the information necessary to invoke a method or function.
+- Client: This creates the command and provides it to the Invoker.
+- Invoker: This is responsible for executing the command on the target.
+- Target (or Receiver): This is the subject of the invocation. It can be a lone function or the method of an object.
+
+Advantages:
+- A command can be scheduled for execution at a later time.
+- A command can be easily serialized and sent over the network. This simple property allows us to distribute jobs across remote machines, transmit commands from the browser to the server, create RPC systems, and so on.
+- Commands make it easy to keep a history of all the operations executed on a system.
+- Commands are an important part of some algorithms for data synchronization and conflict resolution.
+- A command scheduled for execution can be cancelled if it's not yet executed. It can also be reverted (undone), bringing the state of the application to the point before the command was executed.
+- Several commands can be grouped together. This can be used to create atomic transactions or to implement a mechanism whereby all the operations in the group are executed at once.
+- Different kinds of transformation can be performed on a set of commands, such as duplicate removal, joining and splitting, or applying more complex algorithms such as Operational Transformation (OT), which is the base for most of today's real-time collaborative software, such as collaborative text editing.
 
 #### Observer
 Defines an object (called subject), which can notify a set of observers (or listeners), when a change in its state happens. For this we'd use `EventEmitter` class which comes with two methods:
@@ -268,3 +284,20 @@ PS: All methods return the `EventEmitter` instance to allow chaining.
 Emitter vs Callback: callbacks should be used when a result must be returned in an asynchronous way; events should instead be used when there is a need to communicate that something has just happened.
 
 ---
+
+### Writing modules
+
+Dependency: Any entity, state, or data format that affects the behavior or structure of a component;
+
+#### Patterns:
+
+##### Hardcoded dependency
+Generates an intuitive organiation and it is easy to understand and debug.
+Most disadvantages of using hardcoded dependency are associated with stateful instances.
+It makes it difficult to unit test.
+
+##### Dependency injection
+
+##### Service locator;
+
+##### Dependency injection containers;
