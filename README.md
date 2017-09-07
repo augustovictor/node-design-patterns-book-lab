@@ -297,6 +297,21 @@ Most disadvantages of using hardcoded dependency are associated with stateful in
 It makes it difficult to unit test.
 
 ##### Dependency injection
+Here the dependencies wiring responsability were shifted from `bottom-up`, to the `top` only.
+Dependencies of a component being provided as input by external entity.
+This pattern improves decoupling, specially for modules depending on stateful instances.
+Thus the module can be configured to use any dependency, and therefore reused in different contexts.
+
+Steps:
+1. Load factories, which at this point are still stateless objects;
+1. Instantiate each component by providing required dependencies. Here all modules are created and wired;
+
+Types of DI:
+- Constructor injection: Dependencies are passed to a constructor at its creation.
+    - E.g., `const service = new Service(depA, depB, depC);`
+- Property injection: Dependencies are attached to an object after its creation.
+    - E.g., `const service = new Service();` `service.depA = DepA; service.depB = DepB;`
+    - This is less robuts but we may need it in case there depA needs the existence of depB for example.
 
 ##### Service locator;
 
