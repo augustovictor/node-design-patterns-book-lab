@@ -327,4 +327,4 @@ There are 3 types of service locator to wire components:
 - Injected service locator: Referenced by a component through DI (More convenient way of injecting many dependencies at once);
 - Global service locator: Same as `hardcoded`, but a real `singleton`;
 
-##### Dependency injection containers;
+##### Dependency injection containers
