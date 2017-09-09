@@ -1,4 +1,4 @@
-const fnArgs = require('parse-parse-fn-args');
+const fnArgs = require('parse-fn-args');
 
 module.exports = () => {
     const dependencies = {};
@@ -23,6 +23,11 @@ module.exports = () => {
             }
         }
         return dependencies[name];
+    };
+
+    diContainer.inject = (factory) => {
+        const args = fnArgs(factory).map(dep => diContainer.get(dep));
+        return factory.apply(null, args);
     };
 
     return diContainer;

@@ -325,6 +325,67 @@ Noticeable difference between the two approaches:
 There are 3 types of service locator to wire components:
 - Hardcoded dependency on service locator: `require(depA)`;
 - Injected service locator: Referenced by a component through DI (More convenient way of injecting many dependencies at once);
-- Global service locator: Same as `hardcoded`, but a real `singleton`;
+- Global service locator: Same as `hardcoded`, but a real `singleton` (Just use this when really necessary);
 
 ##### Dependency injection containers
+It works almost the same `Dependency injection` does. However modules no longer depend on the `service locator`. And it makes a huge difference in terms of decoupling.
+
+The dependencies are resolved at runtime.
+
+Modules just express their dependencies and `DI container` will do the rest.
+
+In order to use this pattern we need a library for arguments extraction which is `parse-fn-args`.
+
+This pattern improves decoupling and testability but adds more complexity.
+
+```js
+// Execution
+
+// A.js
+a(dep1, dep2) { /* ... */ }
+return a
+
+/******************************************/
+
+// B.js
+b(a) { /* ... */ }
+return a + b;
+
+/******************************************/
+
+// diCo.js
+dependencies = {};
+factories    = {};
+diContainer  = {};
+
+/******************************************/
+
+// app.js
+diCo.factory('A', require('a'));
+diCo.factory('B', require('b'));
+
+b = diCo.get('B');
+
+/******************************************/
+
+// [ 1 ]
+factories = {
+    'A': A.js
+};
+
+// [ 2 ]
+factories = {
+    'A': A.js,
+    'B': B.js
+};
+
+// [ 3a ] diCo.get('B');
+dependencies['B'] >> false
+factory = factories['B'] >> B.js;
+depdendencies['B'] = true && diCo.inject(factory);
+// hold 3a...
+
+// [ 3b ] diCo.inject(B.js)
+args = 'a'
+
+```

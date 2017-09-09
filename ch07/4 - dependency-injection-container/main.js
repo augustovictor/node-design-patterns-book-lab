@@ -1,12 +1,14 @@
 const app = require('express')();
+const diContainer = require('./diContainer')();
 
-const dbFactory = require('./db');
-const authServiceFactory = require('./authService');
-const authControllerFactory = require('./authController');
+diContainer.register('dbName', 'db-example');
+diContainer.register('tokenSecret', 'CHANGE-TOKEN');
 
-const db = dbFactory('db-example');
-const authService = authServiceFactory(db, 'CHANGE-TOKEN');
-const authController = authControllerFactory(authService);
+diContainer.factory('db', require('./db'));
+diContainer.factory('authService', require('./authService'));
+diContainer.factory('authController', require('./authController'));
+
+const authController = diContainer.get('authController');
 
 app.get('/login', authController.login);
 
